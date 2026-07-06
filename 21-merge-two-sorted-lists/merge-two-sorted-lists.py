@@ -9,22 +9,14 @@ class Solution:
         dummy = ListNode()
         temp = dummy
         while list1 and list2:
-            if list1.val > list2.val:
-                current = list2
-                list2 = list2.next
-                temp.next = current
-                temp = temp.next
-                current.next = None
-            else:
-                current = list1
+            if list1.val < list2.val:
+                temp.next = list1
                 list1 = list1.next
-                temp.next = current
-                temp = temp.next
-                current.next = None
-        if list1 is not None:
-            temp.next = list1
-        elif list2 is not None:
-            temp.next = list2
+            else:
+                temp.next = list2
+                list2 = list2.next
+            temp = temp.next
+        temp.next = list1 or list2
         return dummy.next
             
 
