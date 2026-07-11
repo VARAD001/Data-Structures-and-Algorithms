@@ -11,4 +11,6 @@ class Solution:
         if head.val == val:
             return head.next
         return head
+            
+
         
