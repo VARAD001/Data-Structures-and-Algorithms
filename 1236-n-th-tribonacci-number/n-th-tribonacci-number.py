@@ -1,6 +1,6 @@
 class Solution:
     def tribonacci(self, n: int) -> int:
-        memo = [None]*50
+        memo = [None]*(50)
         memo[0] = 0
         memo[1] = 1
         memo[2] = 1
