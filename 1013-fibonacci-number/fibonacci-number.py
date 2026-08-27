@@ -5,4 +5,3 @@ class Solution:
             next_fib = fib_list[i-1]+fib_list[i-2]
             fib_list.append(next_fib)
         return fib_list[n]
-        
