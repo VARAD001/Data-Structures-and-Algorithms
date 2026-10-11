@@ -1,12 +1,8 @@
 class Solution:
     def majorityElement(self, nums: list[int]) -> int:
-        count = 0
-        res = 0
+        n = len(nums)/2
+        freq = {}
         for i in nums:
-            if count == 0:
-                res = i
-            if i == res:
-                count += 1
-            else:
-                count -= 1
-        return res
+            freq[i] = freq.get(i,0)+1
+            if freq[i] > n :
+                return i
