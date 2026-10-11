@@ -1,7 +1,7 @@
 class NumArray:
 
     def __init__(self, nums: list[int]):
-        self.arr = nums
+        self.arr = tuple(nums)
     
     def sumRange(self, left: int, right: int) -> int:
         ans = 0
