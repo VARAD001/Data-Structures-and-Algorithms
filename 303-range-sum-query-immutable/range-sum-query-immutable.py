@@ -4,10 +4,7 @@ class NumArray:
         self.arr = tuple(nums)
     
     def sumRange(self, left: int, right: int) -> int:
-        ans = 0
-        for i in range(left,right+1):
-            ans += self.arr[i]
-        return ans
+        return sum(self.arr[left:right +1])
         
 
 
