@@ -3,24 +3,28 @@ class NumMatrix:
     def __init__(self, matrix: list[list[int]]):
         self.matrix = matrix
         self.prefix = self.prefix_sum(matrix)
+
         
     def prefix_sum(self,nums):
-        prefix = []
-        for rows in nums:
-            new = []
-            a = 0
-            for cols in rows:
-                a += cols
-                new.append(a)
-            prefix.append([0]+new)
+        rows,cols = len(nums),len(nums[0])
+        prefix = [[0]*(cols+1) for _ in range(rows+1)]
+
+        for row in range(rows):
+            pre = 0
+            for col in range(cols):
+                pre+=nums[row][col]
+                above = prefix[row][col+1]
+                prefix[row+1][col+1] = above + pre
         return prefix
 
+            
+
+
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
-        ans = 0
-        for row in range(row1,row2+1):
-            ans += (self.prefix[row][col2+1]-self.prefix[row][col1])
-        return ans
-        
+        return (self.prefix[row2+1][col2+1] 
+        - self.prefix[row1][col2+1] 
+        - self.prefix[row2+1][col1] 
+        + self.prefix[row1][col1])
 
 
 # Your NumMatrix object will be instantiated and called as such:
