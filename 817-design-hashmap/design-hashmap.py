@@ -1,12 +1,12 @@
 class MyHashMap:
 
     def __init__(self):
-        self.map = [[] for _ in range(43)]
+        self.map = [[] for _ in range(1009)]
 
     def _hash(self,key):
         hashed_value = 0
         for char in str(key):
-            hashed_value = ((hashed_value + ord(char)*23)%43)
+            hashed_value = ((hashed_value + ord(char)*23)%1009)
         return hashed_value
         
 
