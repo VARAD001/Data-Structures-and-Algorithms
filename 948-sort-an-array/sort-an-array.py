@@ -1,31 +1,32 @@
 class Solution:
-    def merge(self,list1,list2):
+    def sortArray(self, nums: list[int]) -> list[int]:
+        if len(nums) == 1:
+            return nums
+        mid = len(nums)//2
+        left = self.sortArray(nums[:mid])
+        right = self.sortArray(nums[mid:])
+        return self.merge(left,right)
+
+    def merge(self,nums1,nums2):
         combined = []
+        n1 = len(nums1)
+        n2 = len(nums2)
         i = 0
         j = 0
-        while i < len(list1) and j < len(list2):
-            if list1[i] < list2[j]:
-                combined.append(list1[i])
-                i+=1
+        while i < n1 and j < n2:
+            if nums1[i] < nums2[j]:
+                combined.append(nums1[i])
+                i += 1
             else:
-                combined.append(list2[j])
+                combined.append(nums2[j]) 
                 j += 1
-        while i < len(list1):
-            combined.append(list1[i])
+        while i< n1:
+            combined.append(nums1[i])
             i += 1
-        while j < len(list2):
-            combined.append(list2[j])
+        while j< n2:
+            combined.append(nums2[j])
             j += 1
         return combined
 
 
-    def sortArray(self, nums: List[int]) -> List[int]:
-        if len(nums) == 1:
-            return nums
-        middle_index = len(nums)//2
-        left = self.sortArray(nums[0:middle_index])
-        right = self.sortArray(nums[middle_index:])
-        return self.merge(left,right)
-
-        
         
