@@ -1,9 +1,11 @@
 class Solution:
     def sortColors(self, nums: list[int]) -> None:
-        for i in range(1,len(nums)):
-            temp = nums[i]
-            j = i-1
-            while j >= 0 and nums[j] > temp:
-                nums[j+1] = nums[j]
-                j -= 1
-            nums[j+1] = temp
+        counted = [0,0,0]
+        for i in nums:
+            counted[i] += 1
+        index = 0
+        for i in range(3):
+            for _ in range(counted[i]):
+                nums[index] = i
+                index += 1
+        
