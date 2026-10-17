@@ -1,11 +1,10 @@
 class Solution:
     def maxProfit(self, prices: list[int]) -> int:
-        L = 0
+        min_value = 10000000
+        n = len(prices)
         diff = 0
-        for R in range(1,len(prices)):
-            if prices[L] > prices[R]:
-                L = R
-            else:
-                diff= max(diff,prices[R] - prices[L])
+        for i in range(0,len(prices)):
+            min_value = min(min_value,prices[i])
+            diff = max(diff,prices[i]-min_value)
         return diff
         
