@@ -1,9 +1,7 @@
 class Solution:
     def reverseString(self, s: list[str]) -> None:
-        L = 0
-        R = len(s) - 1
-        while L < R:
-            s[L], s[R] = s[R], s[L]
-            L += 1
-            R -= 1
+        stack = []
+        for i in range(len(s)-1,-1,-1):
+            stack.append(s[i])
+        s[:] = stack
         
