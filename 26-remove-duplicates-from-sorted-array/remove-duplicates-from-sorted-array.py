@@ -1,15 +1,14 @@
 class Solution:
     def removeDuplicates(self, nums: list[int]) -> int:
-        slow = 0
-        fast = 0
-        k = 1
-        while fast < len(nums):
-            if nums[fast] > nums[slow]:
-                slow += 1
-                nums[slow] = nums[fast]                
-                k += 1
-            # if nums[slow] == nums[fast]:
-            #     slow = fast
-            fast += 1
-        return k
+        new = [None]*len(nums)
+        index = 0
+        seen = set()
+        for i in nums:
+            if i not in seen:
+                new[index] = i
+                seen.add(i)
+                index += 1
+        nums[:] = new
+        return len(seen)
+         
         
