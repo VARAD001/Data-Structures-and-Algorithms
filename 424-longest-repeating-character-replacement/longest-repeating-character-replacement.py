@@ -2,10 +2,12 @@ class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         L = 0
         res = 0
+        max_freq = 0
         letters = {}
         for R in range(len(s)):
             letters[s[R]] = letters.get(s[R],0) + 1
-            if (R - L + 1) - max(letters.values()) > k:
+            max_freq = max(max_freq, letters[s[R]])
+            if (R - L + 1) - max_freq > k:
                 letters[s[L]] -= 1
                 L += 1
             res = max(res,(R - L + 1))
