@@ -18,5 +18,3 @@ class Solution:
                 else:
                     L = mid + 1
         return 0 if res == float('inf') else res
-
-        
