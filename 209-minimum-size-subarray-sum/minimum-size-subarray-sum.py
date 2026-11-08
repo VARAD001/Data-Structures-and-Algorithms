@@ -1,16 +1,17 @@
 class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        window = 0
-        count = 0
+    def minSubArrayLen(self, target: int, nums: list[int]) -> int:
+        mimi = 100000000
         L = 0
+        current = 0
         for R in range(len(nums)):
-            window += nums[R]
-            while window>=target:
-                length = R - L + 1
-                if not count:
-                    count = length
-                else:
-                    count = min(count,length)
-                window-=nums[L]
+            current += nums[R]
+            while current >= target:
+                mimi = min(mimi,R-L+1)
+                current -= nums[L]
                 L += 1
-        return count
+        if mimi < 100000000:
+            return mimi
+        else:
+            return 0
+
+        
