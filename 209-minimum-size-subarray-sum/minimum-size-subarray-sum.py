@@ -1,17 +1,22 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: list[int]) -> int:
-        mimi = 100000000
-        L = 0
-        current = 0
-        for R in range(len(nums)):
-            current += nums[R]
-            while current >= target:
-                mimi = min(mimi,R-L+1)
-                current -= nums[L]
-                L += 1
-        if mimi < 100000000:
-            return mimi
-        else:
-            return 0
+        n = len(nums)
+        res = float('inf')
+        prefix = [0] * (n+1)
+        for i in range(n):
+            prefix[i+1] = prefix[i] + nums[i]
+        
+        for i in range(n):
+            L = i + 1
+            R = n
+            req = target + prefix[i]
+            while L <= R:
+                mid = (L + R)//2
+                if prefix[mid] >= req:
+                    R = mid - 1
+                    res = min(res,mid - i)
+                else:
+                    L = mid + 1
+        return 0 if res == float('inf') else res
 
         
